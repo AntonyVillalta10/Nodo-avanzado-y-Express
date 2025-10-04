@@ -6,23 +6,16 @@ const fccTesting = require('./freeCodeCamp/fcctesting.js');
 
 const app = express();
 
-// Configurar Pug como motor de plantillas
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
 
-fccTesting(app); //For FCC testing purposes
+fccTesting(app);
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.route('/').get((req, res) => {
-  res.render('index', {
-    title: 'Hello from Pug!',
-    message: 'This message is rendered from Pug template!',
-    showLogin: false,
-    showRegistration: false,
-    showSocialAuth: false
-  });
+  res.render('index');
 });
 
 const PORT = process.env.PORT || 3000;
