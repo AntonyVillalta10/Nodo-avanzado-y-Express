@@ -16,7 +16,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.route('/').get((req, res) => {
-  res.render('index');
+  res.render('index', {
+    title: 'Hello from Pug!',
+    message: 'This message is rendered from Pug template!',
+    showLogin: false,
+    showRegistration: false,
+    showSocialAuth: false
+  });
 });
 
 const PORT = process.env.PORT || 3000;
